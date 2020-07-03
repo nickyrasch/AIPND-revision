@@ -76,7 +76,7 @@ def classify_images(images_dir, results_dic, model):
         # inputs: path + filename  and  model, returns model_label
         # as classifier label
         image_path = images_dir + key
-        model_label = classifier(image_path, model).lower()
+        model_label = classifier(image_path, model).lower().strip()
 
         # TODO: 3b. BELOW REPLACE pass with CODE to process the model_label to
         #           convert all characters within model_label to lowercase

@@ -56,9 +56,12 @@ def get_pet_labels(image_dir):
         return pet_name.strip()
 
     for id in range(0, len(files), 1):
-        if files[id] not in results_dic:
-            results_dic[files[id]] = [create_label(files[id])]
-        else:
-            print("** Warning: Duplicate files exist in directory:", files[id])
+        # Skips file if starts with . (like .DS_Store of Mac OSX) because it
+        # isn't an pet image file
+        if files[id][0] != ".":
+            if files[id] not in results_dic:
+                results_dic[files[id]] = [create_label(files[id])]
+            else:
+                print("** Warning: Duplicate files exist in directory:", files[id])
 
     return results_dic
